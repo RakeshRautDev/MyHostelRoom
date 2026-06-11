@@ -1,9 +1,10 @@
 'use client';
 
-import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 export default function SignIn() {
+  const router = useRouter();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [loading, setLoading] = useState(false);
@@ -11,11 +12,10 @@ export default function SignIn() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await signIn('credentials', {
-      email,
-      name,
-      callbackUrl: '/'
-    });
+    // Prototype: just redirect to home
+    setTimeout(() => {
+      router.push('/');
+    }, 500);
   };
 
   return (
