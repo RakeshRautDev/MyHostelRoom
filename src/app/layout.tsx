@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-body" });
 const outfit = Outfit({ subsets: ["latin"], variable: "--font-heading" });
 
 export const metadata: Metadata = {
-  title: "Room Legacy | Discover Your Room's History",
+  title: "MyHostelRoom | Discover Your Room's History",
   description: "Track the history of occupants in specific hostel rooms. See who lived there before you, their placements, and more.",
 };
 

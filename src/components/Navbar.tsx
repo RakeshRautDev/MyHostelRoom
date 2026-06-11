@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="container" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <Link href="/">
           <h2 style={{ fontSize: '1.5rem', margin: 0, color: 'var(--text-primary)', letterSpacing: '-0.5px' }}>
-            Room<span style={{ color: 'var(--accent-color)' }}>Legacy</span>
+            MyHostel<span style={{ color: 'var(--accent-color)' }}>Room</span>
           </h2>
         </Link>
         <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
