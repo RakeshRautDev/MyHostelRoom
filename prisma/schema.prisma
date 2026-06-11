@@ -1,0 +1,57 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String      @id @default(cuid())
+  name          String?
+  email         String?     @unique
+  emailVerified DateTime?
+  image         String?
+  
+  // Custom fields
+  role          String      @default("USER") // USER, ADMIN
+  createdAt     DateTime    @default(now())
+  
+  // Relations
+  occupancies   Occupancy[]
+}
+
+model Room {
+  id          String      @id @default(cuid())
+  hostel      String
+  roomNumber  String
+  
+  // Relations
+  occupancies Occupancy[]
+
+  @@unique([hostel, roomNumber])
+}
+
+model Occupancy {
+  id          String    @id @default(cuid())
+  
+  userId      String
+  user        User      @relation(fields: [userId], references: [id])
+  
+  roomId      String
+  room        Room      @relation(fields: [roomId], references: [id])
+  
+  startDate   DateTime
+  endDate     DateTime? // Null if current occupant
+  
+  socials     String?   // JSON or simple text
+  placement   String?   // Where are they now?
+  
+  isApproved  Boolean   @default(true) // Set to true by default since we are skipping admin approval for now
+  
+  createdAt   DateTime  @default(now())
+}
