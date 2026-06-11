@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, { params }: { params: Promise<{ host
       }
     });
 
-    return new NextResponse(qrBuffer, {
+    return new NextResponse(qrBuffer as unknown as BodyInit, {
       status: 200,
       headers: {
         'Content-Type': 'image/png',
